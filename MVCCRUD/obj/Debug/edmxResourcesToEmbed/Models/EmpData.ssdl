@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Trainee2021Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="Description" Type="varchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Trainee2021.dbo.EMPAudit' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="EMPAudit">
+          <Property Name="Id" Type="int" />
+          <Property Name="FirstName" Type="varchar(max)" />
+          <Property Name="LastName" Type="varchar(max)" />
+          <Property Name="City" Type="varchar(max)" />
+          <Property Name="MobileNumber" Type="varchar(max)" />
+          <Property Name="Gender" Type="varchar(max)" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="Email" Type="varchar(max)" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="Age" Type="varchar(max)" />
+          <Property Name="Username" Type="varchar(max)" />
+          <Property Name="Password" Type="varchar(max)" />
+          <Property Name="ConfirmPassword" Type="varchar(max)" />
+          <Property Name="AuditAction" Type="varchar(max)" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>-->
+  <EntityType Name="Exam">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Hiren_Employeeid" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar(max)" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="Marks" Type="varchar(max)" Nullable="false" />
+    <Property Name="Exam_date" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Hiren_Employee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="varchar(max)" />
+    <Property Name="City" Type="varchar(max)" />
+    <Property Name="MobileNumber" Type="varchar(max)" Nullable="false" />
+    <Property Name="Gender" Type="varchar(max)" />
+    <Property Name="DepartmentId" Type="int" Nullable="false" />
+    <Property Name="Email" Type="varchar(max)" Nullable="false" />
+    <Property Name="Address" Type="varchar(max)" />
+    <Property Name="Age" Type="varchar(max)" />
+    <Property Name="Username" Type="varchar(max)" Nullable="false" />
+    <Property Name="Password" Type="varchar(max)" Nullable="false" />
+    <Property Name="ConfirmPassword" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Exam__Hiren_Empl__2B3F6F97">
+    <End Role="Hiren_Employee" Type="Self.Hiren_Employee" Multiplicity="1" />
+    <End Role="Exam" Type="Self.Exam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hiren_Employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Exam">
+        <PropertyRef Name="Hiren_Employeeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Hiren_Emp__Depar__286302EC">
+    <End Role="Department" Type="Self.Department" Multiplicity="1" />
+    <End Role="Hiren_Employee" Type="Self.Hiren_Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Hiren_Employee">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="DEPDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DEPInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="DEPUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="EMPDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="EMPInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirstName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="LastName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="City" Type="varchar(max)" Mode="In" />
+    <Parameter Name="MobileNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Gender" Type="varchar(max)" Mode="In" />
+    <Parameter Name="DepartmentId" Type="int" Mode="In" />
+    <Parameter Name="Email" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Address" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Age" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Username" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Password" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ConfirmPassword" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="EMPUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="FirstName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="LastName" Type="varchar(max)" Mode="In" />
+    <Parameter Name="City" Type="varchar(max)" Mode="In" />
+    <Parameter Name="MobileNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Gender" Type="varchar(max)" Mode="In" />
+    <Parameter Name="DepartmentId" Type="int" Mode="In" />
+    <Parameter Name="Email" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Address" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Age" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Username" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Password" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ConfirmPassword" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="EXAMDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="EXAMInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Hiren_Employeeid" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Mark" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Exam_date" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="EXAMUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="Hiren_Employeeid" Type="int" Mode="In" />
+    <Parameter Name="Title" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Marks" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Exam_date" Type="varchar(max)" Mode="In" />
+  </Function>
+  <EntityContainer Name="Trainee2021ModelStoreContainer">
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exam" EntityType="Self.Exam" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hiren_Employee" EntityType="Self.Hiren_Employee" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Exam__Hiren_Empl__2B3F6F97" Association="Self.FK__Exam__Hiren_Empl__2B3F6F97">
+      <End Role="Hiren_Employee" EntitySet="Hiren_Employee" />
+      <End Role="Exam" EntitySet="Exam" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Hiren_Emp__Depar__286302EC" Association="Self.FK__Hiren_Emp__Depar__286302EC">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Hiren_Employee" EntitySet="Hiren_Employee" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

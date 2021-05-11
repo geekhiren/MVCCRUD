@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Trainee2021ModelStoreContainer" CdmEntityContainer="Trainee2021Entities">
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="Trainee2021Model.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exams">
+      <EntityTypeMapping TypeName="Trainee2021Model.Exam">
+        <MappingFragment StoreEntitySet="Exam">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Hiren_Employeeid" ColumnName="Hiren_Employeeid" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Marks" ColumnName="Marks" />
+          <ScalarProperty Name="Exam_date" ColumnName="Exam_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hiren_Employee">
+      <EntityTypeMapping TypeName="Trainee2021Model.Hiren_Employee">
+        <MappingFragment StoreEntitySet="Hiren_Employee">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DEPDelete" FunctionName="Trainee2021Model.Store.DEPDelete" />
+    <FunctionImportMapping FunctionImportName="DEPInsert" FunctionName="Trainee2021Model.Store.DEPInsert" />
+    <FunctionImportMapping FunctionImportName="DEPUpdate" FunctionName="Trainee2021Model.Store.DEPUpdate" />
+    <FunctionImportMapping FunctionImportName="EMPDelete" FunctionName="Trainee2021Model.Store.EMPDelete" />
+    <FunctionImportMapping FunctionImportName="EMPInsert" FunctionName="Trainee2021Model.Store.EMPInsert" />
+    <FunctionImportMapping FunctionImportName="EMPUpdate" FunctionName="Trainee2021Model.Store.EMPUpdate" />
+    <FunctionImportMapping FunctionImportName="EXAMDelete" FunctionName="Trainee2021Model.Store.EXAMDelete" />
+    <FunctionImportMapping FunctionImportName="EXAMInsert" FunctionName="Trainee2021Model.Store.EXAMInsert" />
+    <FunctionImportMapping FunctionImportName="EXAMUpdate" FunctionName="Trainee2021Model.Store.EXAMUpdate" />
+  </EntityContainerMapping>
+</Mapping>
